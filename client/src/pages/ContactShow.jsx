@@ -3,11 +3,19 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
+import Search from "../components/Search";
 
 const endpoint = "http://localhost:8000/api";
 const ContactShow = () => {
   const [contacts, setContacts] = useState([]);
+  const keys = [
+    "primeiroNome",
+    "ultimoNome",
+    "nomeDoMeio",
+    "departamento",
+    "estado",
+  ];
+  const [query, setQuery] = useState("");
 
   useEffect(() => {
     getAllContacts();
@@ -33,8 +41,8 @@ const ContactShow = () => {
               placeholder="Filtro"
               className="me-2"
               aria-label="Search"
+              onChange={(e) => setQuery(e.target.value)}
             />
-            <Button variant="outline-secondary">Search</Button>
           </Form>
         </div>
         <div className="col-4">
@@ -62,7 +70,7 @@ const ContactShow = () => {
           </tr>
         </thead>
         <tbody>
-          {contacts.map((contact) => (
+          {Search(contacts, query, keys).map((contact) => (
             <tr key={contact.id}>
               <th>{contact.id}</th>
               <td>{contact.tratamento}</td>

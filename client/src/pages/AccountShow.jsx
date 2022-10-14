@@ -3,11 +3,20 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
+import Search from "../components/Search";
 
 const endpoint = "http://localhost:8000/api";
 const AccountShow = () => {
   const [accounts, setAccounts] = useState([]);
+  const keys = [
+    "nome",
+    "razaoSocial",
+    "statusConta",
+    "setor",
+    "segmentoAtuacao",
+    "naturezaJuridica",
+  ];
+  const [query, setQuery] = useState("");
 
   useEffect(() => {
     getAllAccounts();
@@ -29,12 +38,12 @@ const AccountShow = () => {
         <div className="col-8">
           <Form className="d-flex m-1">
             <Form.Control
-              type="search"
+              type="text"
               placeholder="Filtro"
               className="me-2"
               aria-label="Search"
+              onChange={(e) => setQuery(e.target.value)}
             />
-            <Button variant="outline-secondary">Search</Button>
           </Form>
         </div>
         <div className="col-4">
@@ -68,7 +77,7 @@ const AccountShow = () => {
           </tr>
         </thead>
         <tbody>
-          {accounts.map((account) => (
+          {Search(accounts, query, keys).map((account) => (
             <tr key={account.id}>
               <th>{account.id}</th>
               <td>{account.nome}</td>

@@ -3,33 +3,22 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
+import Search from "../components/Search";
 
 const endpoint = "http://localhost:8000/api";
-const endpointAccount = "http://localhost:8000/api";
 
 const OpportunityShow = () => {
   const [opportunities, setOpportunities] = useState([]);
-  const [accounts, setAccounts] = useState([]);
+  const keys = ["nome", "opportunity.account.nome", "estagioNome"];
+  const [query, setQuery] = useState("");
 
   useEffect(() => {
     getAllOpportunities();
   }, []);
 
-  useEffect(() => {
-    getAllAccounts();
-  }, []);
-
-  const getAllAccounts = async () => {
-    const response = await axios.get(`${endpointAccount}/accounts`);
-    setAccounts(response.data);
-    console.log(accounts);
-  };
-
   const getAllOpportunities = async () => {
     const response = await axios.get(`${endpoint}/opportunities`);
     setOpportunities(response.data);
-    console.log(opportunities);
   };
 
   const deleteOpportunity = async (id) => {
@@ -43,12 +32,12 @@ const OpportunityShow = () => {
         <div className="col-8">
           <Form className="d-flex m-1">
             <Form.Control
-              type="search"
+              type="text"
               placeholder="Filtro"
               className="me-2"
               aria-label="Search"
+              onChange={(e) => setQuery(e.target.value)}
             />
-            <Button variant="outline-secondary">Search</Button>
           </Form>
         </div>
         <div className="col-4">
@@ -65,7 +54,6 @@ const OpportunityShow = () => {
           <tr>
             <th scope="col">#</th>
             <th scope="col">Nome</th>
-            <th scope="col">Conta id</th>
             <th scope="col">Conta nome</th>
             <th scope="col">Fase</th>
             <th scope="col">Data Fechamento</th>
@@ -75,11 +63,10 @@ const OpportunityShow = () => {
           </tr>
         </thead>
         <tbody>
-          {opportunities.map((opportunity) => (
+          {Search(opportunities, query, keys).map((opportunity) => (
             <tr key={opportunity.id}>
               <th>{opportunity.id}</th>
               <td>{opportunity.nome}</td>
-              <td>{opportunity.account_id}</td>
               <td>{opportunity.account.nome}</td>
               <td>{opportunity.estagioNome}</td>
               <td>{opportunity.dataApresentacao}</td>
