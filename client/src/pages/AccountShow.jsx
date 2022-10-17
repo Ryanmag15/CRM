@@ -4,10 +4,12 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Form from "react-bootstrap/Form";
 import Search from "../components/Search";
+import Pagination from "../components/Pagination";
 
 const endpoint = "http://localhost:8000/api";
 const AccountShow = () => {
   const [accounts, setAccounts] = useState([]);
+
   const keys = [
     "nome",
     "razaoSocial",
@@ -17,6 +19,16 @@ const AccountShow = () => {
     "naturezaJuridica",
   ];
   const [query, setQuery] = useState("");
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [accountsPerPage] = useState(20);
+  const indexOfLastAccount = currentPage * accountsPerPage;
+  const indexOFirstAccount = indexOfLastAccount - accountsPerPage;
+  const currentAccounts = accounts.slice(
+    indexOFirstAccount,
+    indexOfLastAccount
+  );
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   useEffect(() => {
     getAllAccounts();
@@ -77,7 +89,7 @@ const AccountShow = () => {
           </tr>
         </thead>
         <tbody>
-          {Search(accounts, query, keys).map((account) => (
+          {Search(currentAccounts, query, keys).map((account) => (
             <tr key={account.id}>
               <th>{account.id}</th>
               <td>{account.nome}</td>
@@ -106,6 +118,11 @@ const AccountShow = () => {
           ))}
         </tbody>
       </Table>
+      <Pagination
+        dadosPorPagina={accountsPerPage}
+        totalDados={accounts.length}
+        paginate={paginate}
+      />
     </div>
   );
 };
