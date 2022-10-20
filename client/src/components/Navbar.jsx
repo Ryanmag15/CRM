@@ -28,15 +28,6 @@ function NavComponente() {
             <Nav.Link href="/product">Produtos/Teses</Nav.Link>
             <Nav.Link href="/user">User</Nav.Link>
           </Nav>
-          {/* <Form className="d-flex">
-            <Form.Control
-              type="search"
-              placeholder="Search"
-              className="me-2"
-              aria-label="Search"
-            />
-            <Button variant="outline-light">Search</Button>
-          </Form> */}
         </Navbar.Collapse>
       </Container>
     </Navbar>
