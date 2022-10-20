@@ -3,8 +3,7 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./scss/app.scss";
 import Inicio from "./routes/inicio";
-import User from "./routes/user";
-import Account from "./routes/account";
+
 import Navbar from "./components/Navbar";
 
 import UserShow from "./pages/UserShow";
@@ -22,6 +21,10 @@ import ContactEdit from "./pages/ContactEdit";
 import OpportunityShow from "./pages/OpportunityShow";
 import OpportunityCreate from "./pages/OpportunityCreate";
 import OpportunityEdit from "./pages/OpportunityEdit";
+
+import ProductShow from "./pages/ProductShow";
+import ProductCreate from "./pages/ProductCreate";
+import ProductEdit from "./pages/ProductEdit";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -44,9 +47,11 @@ root.render(
       <Route path="/opportunity/create" element={<OpportunityCreate />} />
       <Route path="/opportunity/edit/:id" element={<OpportunityEdit />} />
 
+      <Route path="/product" element={<ProductShow />} />
+      <Route path="/product/create" element={<ProductCreate />} />
+      <Route path="/product/edit/:id" element={<ProductEdit />} />
+
       <Route path="inicio" element={<Inicio />} />
-      <Route path="user" element={<User />} />
-      <Route path="account" element={<Account />} />
     </Routes>
   </BrowserRouter>
 );

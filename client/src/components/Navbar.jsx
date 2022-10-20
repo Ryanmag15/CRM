@@ -4,7 +4,7 @@ import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 
-function NavScrollExample() {
+function NavComponente() {
   return (
     <Navbar bg="warning" expand="lg">
       <Container fluid>
@@ -25,10 +25,10 @@ function NavScrollExample() {
             <Nav.Link href="/paineis">Painéis</Nav.Link>
             <Nav.Link href="/relatorios">Relatórios</Nav.Link>
             <Nav.Link href="/calendario">Calendário</Nav.Link>
-            <Nav.Link href="/teses">Teses</Nav.Link>
+            <Nav.Link href="/product">Produtos/Teses</Nav.Link>
             <Nav.Link href="/user">User</Nav.Link>
           </Nav>
-          <Form className="d-flex">
+          {/* <Form className="d-flex">
             <Form.Control
               type="search"
               placeholder="Search"
@@ -36,11 +36,11 @@ function NavScrollExample() {
               aria-label="Search"
             />
             <Button variant="outline-light">Search</Button>
-          </Form>
+          </Form> */}
         </Navbar.Collapse>
       </Container>
     </Navbar>
   );
 }
 
-export default NavScrollExample;
+export default NavComponente;

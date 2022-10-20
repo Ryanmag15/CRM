@@ -6,6 +6,7 @@ use App\Http\Controllers\api\OpportunityController;
 use App\Http\Controllers\api\HonorarioController;
 use App\Http\Controllers\api\TaskController;
 use App\Http\Controllers\api\CommitmentController;
+use App\Http\Controllers\api\ProductController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\api\UserController;
@@ -70,4 +71,12 @@ Route::controller(CommitmentController::class)->group(function(){
     Route::get('/commitment/{id}', 'show' );
     Route::put('/commitment/{id}', 'update' );
     Route::delete('/commitment/{id}', 'destroy');
+});
+
+Route::controller(ProductController::class)->group(function(){
+    Route::get('/products', 'index');
+    Route::post('/product', 'store');
+    Route::get('/product/{id}', 'show' );
+    Route::put('/product/{id}', 'update' );
+    Route::delete('/product/{id}', 'destroy');
 });
