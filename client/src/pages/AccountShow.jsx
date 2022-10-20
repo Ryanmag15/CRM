@@ -24,10 +24,7 @@ const AccountShow = () => {
   const [accountsPerPage] = useState(20);
   const indexOfLastAccount = currentPage * accountsPerPage;
   const indexOFirstAccount = indexOfLastAccount - accountsPerPage;
-  const currentAccounts = accounts.slice(
-    indexOFirstAccount,
-    indexOfLastAccount
-  );
+  let currentAccounts = accounts.slice(indexOFirstAccount, indexOfLastAccount);
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   useEffect(() => {
@@ -38,6 +35,12 @@ const AccountShow = () => {
     const response = await axios.get(`${endpoint}/accounts`);
     setAccounts(response.data);
   };
+
+  if (query == "") {
+    currentAccounts = accounts.slice(indexOFirstAccount, indexOfLastAccount);
+  } else {
+    currentAccounts = Search(accounts, query, keys);
+  }
 
   const deleteAccount = async (id) => {
     await axios.delete(`${endpoint}/account/${id}`);
