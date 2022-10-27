@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Form from "react-bootstrap/Form";
 import Search from "../components/Search";
+import Pagination from "../components/Pagination";
 
 const endpoint = "http://localhost:8000/api";
 const ProductShow = () => {
@@ -11,6 +12,19 @@ const ProductShow = () => {
 
   const keys = ["nome", "ativo", "descricao"];
   const [query, setQuery] = useState("");
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [productsPerPage] = useState(30);
+  const indexOfLastProduct = currentPage * productsPerPage;
+  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+  let currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+  if (query == "") {
+    currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
+  } else {
+    currentProducts = Search(products, query, keys);
+  }
 
   useEffect(() => {
     getAllProducts();
@@ -65,7 +79,7 @@ const ProductShow = () => {
           </tr>
         </thead>
         <tbody>
-          {Search(products, query, keys).map((product) => (
+          {Search(currentProducts, query, keys).map((product) => (
             <tr key={product.id}>
               <th>{product.id}</th>
               <td>{product.nome}</td>
@@ -88,6 +102,12 @@ const ProductShow = () => {
           ))}
         </tbody>
       </Table>
+      <Pagination
+        dadosPorPagina={productsPerPage}
+        totalDados={products.length}
+        paginate={paginate}
+        activePage={currentPage}
+      />
     </div>
   );
 };

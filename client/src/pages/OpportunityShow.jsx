@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Form from "react-bootstrap/Form";
 import Search from "../components/Search";
+import Pagination from "../components/Pagination";
 
 const endpoint = "http://localhost:8000/api";
 
@@ -11,6 +12,26 @@ const OpportunityShow = () => {
   const [opportunities, setOpportunities] = useState([]);
   const keys = ["nome", "opportunity.account.nome", "estagioNome"];
   const [query, setQuery] = useState("");
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [opportunitiesPerPage] = useState(30);
+  const indexOfLastOpportunity = currentPage * opportunitiesPerPage;
+  const indexOfFirstOpportunity = indexOfLastOpportunity - opportunitiesPerPage;
+  let currentOpportunities = opportunities.slice(
+    indexOfFirstOpportunity,
+    indexOfLastOpportunity
+  );
+
+  if (query == "") {
+    currentOpportunities = opportunities.slice(
+      indexOfFirstOpportunity,
+      indexOfLastOpportunity
+    );
+  } else {
+    currentOpportunities = Search(opportunities, query, keys);
+  }
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   useEffect(() => {
     getAllOpportunities();
@@ -63,7 +84,7 @@ const OpportunityShow = () => {
           </tr>
         </thead>
         <tbody>
-          {Search(opportunities, query, keys).map((opportunity) => (
+          {Search(currentOpportunities, query, keys).map((opportunity) => (
             <tr key={opportunity.id}>
               <th>{opportunity.id}</th>
               <td>{opportunity.nome}</td>
@@ -88,6 +109,12 @@ const OpportunityShow = () => {
           ))}
         </tbody>
       </Table>
+      <Pagination
+        dadosPorPagina={opportunitiesPerPage}
+        totalDados={opportunities.length}
+        paginate={paginate}
+        activePage={currentPage}
+      />
     </div>
   );
 };

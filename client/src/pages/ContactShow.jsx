@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Form from "react-bootstrap/Form";
 import Search from "../components/Search";
+import Pagination from "../components/Pagination";
 
 const endpoint = "http://localhost:8000/api";
 const ContactShow = () => {
@@ -16,6 +17,19 @@ const ContactShow = () => {
     "estado",
   ];
   const [query, setQuery] = useState("");
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [contactsPerPage] = useState(30);
+  const indexOfLastContact = currentPage * contactsPerPage;
+  const indexOfFirstContact = indexOfLastContact - contactsPerPage;
+  let currentContacts = contacts.slice(indexOfFirstContact, indexOfLastContact);
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+  if (query == "") {
+    currentContacts = contacts.slice(indexOfFirstContact, indexOfLastContact);
+  } else {
+    currentContacts = Search(contacts, query, keys);
+  }
 
   useEffect(() => {
     getAllContacts();
@@ -70,7 +84,7 @@ const ContactShow = () => {
           </tr>
         </thead>
         <tbody>
-          {Search(contacts, query, keys).map((contact) => (
+          {Search(currentContacts, query, keys).map((contact) => (
             <tr key={contact.id}>
               <th>{contact.id}</th>
               <td>{contact.tratamento}</td>
@@ -97,6 +111,12 @@ const ContactShow = () => {
           ))}
         </tbody>
       </Table>
+      <Pagination
+        dadosPorPagina={contactsPerPage}
+        totalDados={contacts.length}
+        paginate={paginate}
+        activePage={currentPage}
+      />
     </div>
   );
 };
