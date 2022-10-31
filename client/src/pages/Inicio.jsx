@@ -16,7 +16,7 @@ function BasicExample() {
         <Alert key={variant} variant={variant}>
           Bem vindo ao CRM, está em fazer de teste, navegue no sistema por
           gentileza e deixe suas melhoras e sugestões! TELAS MONTADAS:
-          CONTAS/CONTATOS/TESES/OPORTUNIDADES
+          CONTAS/CONTATOS/TESES/OPORTUNIDADES/RELATÓRIOS
         </Alert>
       ))}
     </>
