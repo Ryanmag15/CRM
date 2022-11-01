@@ -15,8 +15,10 @@ class ContactController extends Controller
      */
     public function index()
     {
-        $contact = Contact::all();
-        return $contact; 
+        // $contact = Contact::all();
+        // return $contact; 
+        return Contact::with('account')->get();
+
     }
 
     /**

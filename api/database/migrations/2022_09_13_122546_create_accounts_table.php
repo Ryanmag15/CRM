@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('tipo')->nullable();
             $table->string('rua')->nullable();
             $table->string('cidade')->nullable();
-            $table->string('cep')->nullable();
             $table->string('estado')->nullable();
+            $table->string('cep')->nullable();
             $table->string('pais')->nullable();
             $table->string('siteWeb')->nullable();
             $table->string('setor')->nullable();

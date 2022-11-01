@@ -46,12 +46,16 @@ class Account extends Model
         
     ];
 
-    public function contacts(){
-        return $this->hasMany(Contact::class, 'account_id', 'id');
-    }
+    // public function contacts(){
+    //     return $this->hasMany(Contact::class, 'account_id', 'id');
+    // }
 
     public function getOpportunities() {
         return Opportunity::with('account')->get();
+    }
+
+    public function getContacts() {
+        return Contact::with('account')->get();
     }
    
 }
