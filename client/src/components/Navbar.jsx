@@ -80,7 +80,7 @@ const Navbar = () => {
                   Task
                 </Link>
                 <Link to="/panel" className="nav-link">
-                  Panels
+                  Panel
                 </Link>
                 <Link to="/report" className="nav-link">
                   Report
