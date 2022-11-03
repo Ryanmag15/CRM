@@ -84,6 +84,9 @@ function ContactCreate() {
         <div className="card-body">
           <form onSubmit={store}>
             <div className="row">
+              <button className="btn btn-secondary m-1">
+                Informações para contato
+              </button>
               <div className="col-6">
                 <label>
                   Tratamento
@@ -97,24 +100,6 @@ function ContactCreate() {
                     <option value="Ms.">Ms.</option>
                     <option value="Mr.">Mr.</option>
                     <option value="Mrs.">Mrs.</option>
-                  </select>
-                </label>
-              </div>
-              <div className="col-6">
-                <label>
-                  Nome da Conta
-                  <select
-                    className="form-select col-12"
-                    aria-label="Default select example"
-                    value={account_id}
-                    onChange={(e) => setAccountId(e.target.value)}
-                  >
-                    <option value=""></option>
-                    {accounts.map((account) => (
-                      <option key={account.id} value={account.id}>
-                        {account.nome}
-                      </option>
-                    ))}
                   </select>
                 </label>
               </div>
@@ -137,7 +122,7 @@ function ContactCreate() {
                 ></input>
               </div>
               <div className="col-6 form-label">
-                <label className="form-label">Telefone</label>
+                <label className="form-label">Nome do Meio</label>
                 <input
                   value={nomeDoMeio}
                   onChange={(e) => setNomeDoMeio(e.target.value)}
@@ -150,6 +135,154 @@ function ContactCreate() {
                 <input
                   value={sufixo}
                   onChange={(e) => setSufixo(e.target.value)}
+                  type="text"
+                  className="form-control"
+                ></input>
+              </div>
+              <div className="col-6">
+                <label>
+                  Nome da Conta *
+                  <select
+                    className="form-select col-12"
+                    aria-label="Default select example"
+                    value={account_id}
+                    onChange={(e) => setAccountId(e.target.value)}
+                  >
+                    <option value=""></option>
+                    {accounts.map((account) => (
+                      <option key={account.id} value={account.id}>
+                        {account.nome}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+              </div>
+              <div className="col-6 form-label">
+                <label className="form-label">Departamento</label>
+                <input
+                  value={departamento}
+                  onChange={(e) => setDepartamento(e.target.value)}
+                  type="text"
+                  className="form-control"
+                ></input>
+              </div>
+              <div className="col-6 form-label">
+                <label className="form-label">Email</label>
+                <input
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  type="text"
+                  className="form-control"
+                ></input>
+              </div>
+              <div className="col-6 form-label">
+                <label className="form-label">Telefone</label>
+                <input
+                  value={telefone}
+                  onChange={(e) => setTelefone(e.target.value)}
+                  type="text"
+                  className="form-control"
+                ></input>
+              </div>
+              <div className="col-6 form-label">
+                <label className="form-label">Celular</label>
+                <input
+                  value={celular}
+                  onChange={(e) => setCelular(e.target.value)}
+                  type="text"
+                  className="form-control"
+                ></input>
+              </div>
+              <div className="col-6 form-label">
+                <label className="form-label"> Telefone Casa</label>
+                <input
+                  value={telefoneCasa}
+                  onChange={(e) => setTelefoneCasa(e.target.value)}
+                  type="text"
+                  className="form-control"
+                ></input>
+              </div>
+              <div className="col-6 form-label">
+                <label className="form-label">Linkedin</label>
+                <input
+                  value={linkedin}
+                  onChange={(e) => setLinkedin(e.target.value)}
+                  type="text"
+                  className="form-control"
+                ></input>
+              </div>
+              <div className="col-6 form-label">
+                <label className="form-label">Titulo</label>
+                <input
+                  value={titulo}
+                  onChange={(e) => setTitulo(e.target.value)}
+                  type="text"
+                  className="form-control"
+                ></input>
+              </div>
+              <div className="col-6 form-label">
+                <label className="form-label">Unidade</label>
+                <textarea
+                  value={unidade}
+                  onChange={(e) => setUnidade(e.target.value)}
+                  type="text"
+                  className="form-control"
+                  rows="3"
+                ></textarea>
+              </div>
+              <div className="col-6 form-label">
+                <label className="form-label">Origem Contato</label>
+                <input
+                  value={origemContato}
+                  onChange={(e) => setOrigemContato(e.target.value)}
+                  type="text"
+                  className="form-control"
+                ></input>
+              </div>
+              <button className="btn btn-secondary m-1">
+                Informações de endereço
+              </button>
+              <div className="col-6 form-label">
+                <label className="form-label">Rua</label>
+                <textarea
+                  value={rua}
+                  onChange={(e) => setRua(e.target.value)}
+                  type="text"
+                  className="form-control"
+                ></textarea>
+              </div>
+              <div className="col-6 form-label">
+                <label className="form-label">Cidade</label>
+                <input
+                  value={cidade}
+                  onChange={(e) => setCidade(e.target.value)}
+                  type="text"
+                  className="form-control"
+                ></input>
+              </div>
+              <div className="col-6 form-label">
+                <label className="form-label">Estado</label>
+                <input
+                  value={estado}
+                  onChange={(e) => setEstado(e.target.value)}
+                  type="text"
+                  className="form-control"
+                ></input>
+              </div>
+              <div className="col-6 form-label">
+                <label className="form-label">CEP</label>
+                <input
+                  value={cep}
+                  onChange={(e) => setCep(e.target.value)}
+                  type="text"
+                  className="form-control"
+                ></input>
+              </div>
+              <div className="col-6 form-label">
+                <label className="form-label">Pais</label>
+                <input
+                  value={pais}
+                  onChange={(e) => setPais(e.target.value)}
                   type="text"
                   className="form-control"
                 ></input>
@@ -199,114 +332,9 @@ function ContactCreate() {
                   className="form-control"
                 ></input>
               </div>
-              <div className="col-6 form-label">
-                <label className="form-label">Rua</label>
-                <input
-                  value={rua}
-                  onChange={(e) => setRua(e.target.value)}
-                  type="text"
-                  className="form-control"
-                ></input>
-              </div>
-              <div className="col-6 form-label">
-                <label className="form-label">Cidade</label>
-                <input
-                  value={cidade}
-                  onChange={(e) => setCidade(e.target.value)}
-                  type="text"
-                  className="form-control"
-                ></input>
-              </div>
-              <div className="col-6 form-label">
-                <label className="form-label">Estado</label>
-                <input
-                  value={estado}
-                  onChange={(e) => setEstado(e.target.value)}
-                  type="text"
-                  className="form-control"
-                ></input>
-              </div>
-              <div className="col-6 form-label">
-                <label className="form-label">CEP</label>
-                <input
-                  value={cep}
-                  onChange={(e) => setCep(e.target.value)}
-                  type="text"
-                  className="form-control"
-                ></input>
-              </div>
-              <div className="col-6 form-label">
-                <label className="form-label">Pais</label>
-                <input
-                  value={pais}
-                  onChange={(e) => setPais(e.target.value)}
-                  type="text"
-                  className="form-control"
-                ></input>
-              </div>
-              <div className="col-6 form-label">
-                <label className="form-label">Telefone</label>
-                <input
-                  value={telefone}
-                  onChange={(e) => setTelefone(e.target.value)}
-                  type="text"
-                  className="form-control"
-                ></input>
-              </div>
-              <div className="col-6 form-label">
-                <label className="form-label">Celular</label>
-                <input
-                  value={celular}
-                  onChange={(e) => setCelular(e.target.value)}
-                  type="text"
-                  className="form-control"
-                ></input>
-              </div>
-              <div className="col-6 form-label">
-                <label className="form-label"> Telefone Casa</label>
-                <input
-                  value={telefoneCasa}
-                  onChange={(e) => setTelefoneCasa(e.target.value)}
-                  type="text"
-                  className="form-control"
-                ></input>
-              </div>
-              <div className="col-6 form-label">
-                <label className="form-label">Email</label>
-                <input
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  type="text"
-                  className="form-control"
-                ></input>
-              </div>
-              <div className="col-6 form-label">
-                <label className="form-label">Titulo</label>
-                <input
-                  value={titulo}
-                  onChange={(e) => setTitulo(e.target.value)}
-                  type="text"
-                  className="form-control"
-                ></input>
-              </div>
-              <div className="col-6 form-label">
-                <label className="form-label">Departamento</label>
-                <input
-                  value={departamento}
-                  onChange={(e) => setDepartamento(e.target.value)}
-                  type="text"
-                  className="form-control"
-                ></input>
-              </div>
-              <div className="col-6 form-label">
-                <label className="form-label">Origem Contato</label>
-                <input
-                  value={origemContato}
-                  onChange={(e) => setOrigemContato(e.target.value)}
-                  type="text"
-                  className="form-control"
-                ></input>
-              </div>
+              <button className="btn btn-secondary m-1">
+                Informações adicionais
+              </button>
               <div className="col-6">
                 <label>
                   Receber Informativo
@@ -321,25 +349,7 @@ function ContactCreate() {
                   </select>
                 </label>
               </div>
-              <div className="col-6 form-label">
-                <label className="form-label">Unidade</label>
-                <input
-                  value={unidade}
-                  onChange={(e) => setUnidade(e.target.value)}
-                  type="text"
-                  className="form-control"
-                ></input>
-              </div>
-              <div className="col-6 form-label">
-                <label className="form-label">Linkedin</label>
-                <input
-                  value={linkedin}
-                  onChange={(e) => setLinkedin(e.target.value)}
-                  type="text"
-                  className="form-control"
-                ></input>
-              </div>
-              <button type="submit" className="btn btn-primary">
+              <button type="submit" className="btn btn-primary m-1">
                 Criar Contato
               </button>
             </div>

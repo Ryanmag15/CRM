@@ -29,6 +29,9 @@ function ProductCreate() {
         <div className="card-body">
           <form onSubmit={store}>
             <div className="row">
+              <button className="btn btn-secondary m-1">
+                Informações da tese
+              </button>
               <div className="col-6 form-label">
                 <label className="form-label">Nome</label>
                 <input

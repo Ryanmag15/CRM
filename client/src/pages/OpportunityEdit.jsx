@@ -163,10 +163,13 @@ function OpportunityEdit() {
   return (
     <div>
       <div className="card m-2 ">
-        <h5 className="card-header">Account Create</h5>
+        <h5 className="card-header">Opportunity Edit</h5>
         <div className="card-body">
           <form onSubmit={update}>
             <div className="row">
+              <button className="btn btn-secondary m-1">
+                Informações da oportunidade
+              </button>
               <div className="col-6 form-label">
                 <label className="form-label">Nome</label>
                 <input
@@ -185,6 +188,7 @@ function OpportunityEdit() {
                     value={account_id || ""}
                     onChange={(e) => setAccountId(e.target.value)}
                   >
+                    <option value=""></option>
                     {accounts.map((account) => (
                       <option key={account.id} value={account.id}>
                         {account.nome}
@@ -194,31 +198,68 @@ function OpportunityEdit() {
                 </label>
               </div>
               <div className="col-6 form-label">
-                <label className="form-label">Descrição</label>
+                <label className="form-label">Origem Oportunidade</label>
                 <input
-                  value={descricao || ""}
-                  onChange={(e) => setDescricao(e.target.value)}
+                  value={origemOportunidade || ""}
+                  onChange={(e) => setOrigemOportunidade(e.target.value)}
                   type="text"
                   className="form-control"
                 ></input>
               </div>
               <div className="col-6 form-label">
-                <label className="form-label">Estágio Nome</label>
+                <label className="form-label">Data fechamento</label>
                 <input
-                  value={estagioNome || ""}
-                  onChange={(e) => setEstagioNome(e.target.value)}
-                  type="text"
+                  value={dataFechamento || ""}
+                  onChange={(e) => setDataFechamento(e.target.value)}
+                  type="date"
                   className="form-control"
                 ></input>
               </div>
               <div className="col-6 form-label">
-                <label className="form-label">Estágio Classificação</label>
+                <label className="form-label">Estágio Classificação </label>
                 <input
                   value={estagioClassificacao || ""}
                   onChange={(e) => setEstagioClassificacao(e.target.value)}
-                  type="text"
+                  type="number"
                   className="form-control"
                 ></input>
+              </div>
+              <div className="col-6 form-label">
+                <label className="form-label">Probabilidade % </label>
+                <input
+                  value={probabilidade || ""}
+                  onChange={(e) => setProbabilidade(e.target.value)}
+                  type="number"
+                  className="form-control"
+                ></input>
+              </div>
+              <div className="col-6">
+                <label>
+                  Estágio Nome
+                  <select
+                    className="form-select col-12"
+                    aria-label="Default select example"
+                    value={estagioNome || ""}
+                    onChange={(e) => setEstagioNome(e.target.value)}
+                  >
+                    <option value=""></option>
+                    <option value="Identificada Passiva">
+                      Identificada Passiva
+                    </option>
+                    <option value="Identificada Ativa">
+                      Identificada Ativa
+                    </option>
+                    <option value="Programada">Programada</option>
+                    <option value="Apresentada">Apresentada</option>
+                    <option value="Contratada">Contratada</option>
+                    <option value="Documentacao">Documentacao</option>
+                    <option value="Triagem">Triagem</option>
+                    <option value="Execucao">Execucao</option>
+                    <option value="Honorarios">Honorarios</option>
+                    <option value="Encerrada">Encerrada</option>
+                    <option value="Descartada">Descartada</option>
+                  </select>
+                </label>
               </div>
               <div className="col-6 form-label">
                 <label className="form-label">Quantia</label>
@@ -229,224 +270,31 @@ function OpportunityEdit() {
                   className="form-control"
                 ></input>
               </div>
-              <div className="col-6 form-label">
-                <label className="form-label">Probabilidade</label>
-                <input
-                  value={probabilidade || ""}
-                  onChange={(e) => setProbabilidade(e.target.value)}
-                  type="text"
-                  className="form-control"
-                ></input>
+              <div className="col-6">
+                <label>
+                  Segmento de Atuação
+                  <select
+                    className="form-select col-12"
+                    aria-label="Default select example"
+                    value={seguimento || ""}
+                    onChange={(e) => setSeguimento(e.target.value)}
+                  >
+                    <option value=""></option>
+                    <option value="Nenhum">Nenhum</option>
+                    <option value="Automotivo">Automotivo</option>
+                    <option value="Financeiro">Financeiro</option>
+                    <option value="MeM">MeM</option>
+                    <option value="Outros">Outros</option>
+                  </select>
+                </label>
               </div>
-              <div className="col-6 form-label">
-                <label className="form-label">Renda Esperada</label>
-                <input
-                  value={rendaEsperada || ""}
-                  onChange={(e) => setRendaEsperada(e.target.value)}
-                  type="text"
-                  className="form-control"
-                ></input>
-              </div>
-              <div className="col-6 form-label">
-                <label className="form-label">Total de Oportunidades</label>
-                <input
-                  value={totalOportunidades || ""}
-                  onChange={(e) => setTotalOportunidades(e.target.value)}
-                  type="text"
-                  className="form-control"
-                ></input>
-              </div>
-              <div className="col-6 form-label">
-                <label className="form-label">Está Fechado</label>
-                <input
-                  value={estaFechado || ""}
-                  onChange={(e) => setestaFechado(e.target.value)}
-                  type="text"
-                  className="form-control"
-                ></input>
-              </div>
-              <div className="col-6 form-label">
-                <label className="form-label">Data fechamento</label>
-                <input
-                  value={dataFechamento || ""}
-                  onChange={(e) => setdataFechamento(e.target.value)}
-                  type="text"
-                  className="form-control"
-                ></input>
-              </div>
-              <div className="col-6 form-label">
-                <label className="form-label">Está Ganho</label>
-                <input
-                  value={estaGanho || ""}
-                  onChange={(e) => setEstaGanho(e.target.value)}
-                  type="text"
-                  className="form-control"
-                ></input>
-              </div>
-              <div className="col-6 form-label">
-                <label className="form-label">Catégoria Previsão</label>
-                <input
-                  value={categoriaPrevisao || ""}
-                  onChange={(e) => setCategoriaPrevisao(e.target.value)}
-                  type="text"
-                  className="form-control"
-                ></input>
-              </div>
-              <div className="col-6 form-label">
-                <label className="form-label">Nome Catégoria Previsão</label>
-                <input
-                  value={nomeCategoriaPrevisao || ""}
-                  onChange={(e) => setNomeCategoriaPrevisao(e.target.value)}
-                  type="text"
-                  className="form-control"
-                ></input>
-              </div>
-              <div className="col-6 form-label">
-                <label className="form-label">Linha Oportunidade</label>
-                <input
-                  value={itemLinhaOportunidade || ""}
-                  onChange={(e) => setItemLinhaOportunidade(e.target.value)}
-                  type="text"
-                  className="form-control"
-                ></input>
-              </div>
-              <div className="col-6 form-label">
-                <label className="form-label">Data Alteração Estágio</label>
-                <input
-                  value={dataAlteracaoUltimoEstagio || ""}
-                  onChange={(e) =>
-                    setDataAlteracaoUltimoEstagio(e.target.value)
-                  }
-                  type="text"
-                  className="form-control"
-                ></input>
-              </div>
-              <div className="col-6 form-label">
-                <label className="form-label">Ano Fiscal</label>
-                <input
-                  value={anoFiscal || ""}
-                  onChange={(e) => setAnoFiscal(e.target.value)}
-                  type="text"
-                  className="form-control"
-                ></input>
-              </div>
-              <div className="col-6 form-label">
-                <label className="form-label">Trimestre Fiscal</label>
-                <input
-                  value={trimestreFiscal || ""}
-                  onChange={(e) => setTrimestreFiscal(e.target.value)}
-                  type="text"
-                  className="form-control"
-                ></input>
-              </div>
-              <div className="col-6 form-label">
-                <label className="form-label">Trimestre Fiscal</label>
-                <input
-                  value={beneficioEconomico || ""}
-                  onChange={(e) => setBeneficioEconomico(e.target.value)}
-                  type="text"
-                  className="form-control"
-                ></input>
-              </div>
-
-              <div className="col-6 form-label">
-                <label className="form-label">Motivo Perda</label>
-                <input
-                  value={motivoPerda || ""}
-                  onChange={(e) => setMotivoPerda(e.target.value)}
-                  type="text"
-                  className="form-control"
-                ></input>
-              </div>
-              <div className="col-6 form-label">
-                <label className="form-label">CAP</label>
-                <input
-                  value={cap || ""}
-                  onChange={(e) => setCap(e.target.value)}
-                  type="text"
-                  className="form-control"
-                ></input>
-              </div>
-              <div className="col-6 form-label">
-                <label className="form-label">Data Execução</label>
-                <input
-                  value={dataExecucao || ""}
-                  onChange={(e) => setDataExecucao(e.target.value)}
-                  type="text"
-                  className="form-control"
-                ></input>
-              </div>
-              <div className="col-6 form-label">
-                <label className="form-label">Data Conclusão Triagem</label>
-                <input
-                  value={dataConclusaoTriagem || ""}
-                  onChange={(e) => setDataConclusaoTriagem(e.target.value)}
-                  type="text"
-                  className="form-control"
-                ></input>
-              </div>
-              <div className="col-6 form-label">
-                <label className="form-label">Documentação Recebida</label>
-                <input
-                  value={dataRecebimentoDocumentacao || ""}
-                  onChange={(e) =>
-                    setDataRecebimentoDocumentacao(e.target.value)
-                  }
-                  type="text"
-                  className="form-control"
-                ></input>
-              </div>
-              <div className="col-6 form-label">
-                <label className="form-label">Deliberação</label>
-                <input
-                  value={deliberacao || ""}
-                  onChange={(e) => setDeliberacao(e.target.value)}
-                  type="text"
-                  className="form-control"
-                ></input>
-              </div>
-              <div className="col-6 form-label">
-                <label className="form-label">Documentação Recebida</label>
-                <input
-                  value={documentacaoRecebida || ""}
-                  onChange={(e) => setDocumentacaoRecebida(e.target.value)}
-                  type="text"
-                  className="form-control"
-                ></input>
-              </div>
-              <div className="col-6 form-label">
-                <label className="form-label">Escopo</label>
-                <input
-                  value={escopo || ""}
-                  onChange={(e) => setEscopo(e.target.value)}
-                  type="text"
-                  className="form-control"
-                ></input>
-              </div>
-              <div className="col-6 form-label">
-                <label className="form-label">Forma</label>
-                <input
-                  value={forma || ""}
-                  onChange={(e) => setForma(e.target.value)}
-                  type="text"
-                  className="form-control"
-                ></input>
-              </div>
-              <div className="col-6 form-label">
-                <label className="form-label">Formato</label>
-                <input
-                  value={formato || ""}
-                  onChange={(e) => setFormato(e.target.value)}
-                  type="text"
-                  className="form-control"
-                ></input>
-              </div>
+              <button className="btn btn-secondary m-1">Honorários</button>
               <div className="col-6 form-label">
                 <label className="form-label">Honorário Pró Labore</label>
                 <input
                   value={honorarioProLabore || ""}
                   onChange={(e) => setHonorarioProLabore(e.target.value)}
-                  type="text"
+                  type="number"
                   className="form-control"
                 ></input>
               </div>
@@ -455,6 +303,338 @@ function OpportunityEdit() {
                 <input
                   value={honorarioExito || ""}
                   onChange={(e) => setHonorarioExito(e.target.value)}
+                  type="number"
+                  className="form-control"
+                ></input>
+              </div>
+              <div className="col-6 form-label">
+                <label className="form-label">CAP</label>
+                <input
+                  value={cap || ""}
+                  onChange={(e) => setCap(e.target.value)}
+                  type="number"
+                  className="form-control"
+                ></input>
+              </div>
+              <div className="col-6 form-label">
+                <label className="form-label">Benefício Econômico</label>
+                <input
+                  value={beneficioEconomico || ""}
+                  onChange={(e) => setBeneficioEconomico(e.target.value)}
+                  type="number"
+                  className="form-control"
+                ></input>
+              </div>
+              <button className="btn btn-secondary m-1">
+                Informações adicionais
+              </button>
+              <div className="col-6 form-label">
+                <label className="form-label">Prazo Externo</label>
+                <input
+                  value={prazoExterno || ""}
+                  onChange={(e) => setPrazoExterno(e.target.value)}
+                  type="date"
+                  className="form-control"
+                ></input>
+              </div>
+              <div className="col-6 form-label">
+                <label className="form-label">Prazo Interno</label>
+                <input
+                  value={prazoInterno || ""}
+                  onChange={(e) => setPrazoInterno(e.target.value)}
+                  type="date"
+                  className="form-control"
+                ></input>
+              </div>
+              <button className="btn btn-secondary m-1">
+                Informações de descrição
+              </button>
+              <div className="col-12 form-label">
+                <label className="form-label">Escopo</label>
+                <textarea
+                  value={escopo || ""}
+                  onChange={(e) => setEscopo(e.target.value)}
+                  type="text"
+                  rows="3"
+                  className="form-control"
+                ></textarea>
+              </div>
+              <button className="btn btn-secondary m-1">
+                Outras informações
+              </button>
+              <div className="col-6">
+                <label>
+                  Formato
+                  <select
+                    className="form-select col-12"
+                    aria-label="Default select example"
+                    value={formato || ""}
+                    onChange={(e) => setFormato(e.target.value)}
+                  >
+                    <option value=""></option>
+                    <option value="Parecer">Parecer</option>
+                    <option value="Opiniao Legal">Opinião Legal</option>
+                    <option value="Contratada">Contratada</option>
+                    <option value="Nota Tecnica">Nota Tecnica</option>
+                    <option value="Email">Email</option>
+                    <option value="Apresentacao PPT">Apresentacao PPT</option>
+                  </select>
+                </label>
+              </div>
+              <div className="col-6 form-label">
+                <label className="form-label">Data Apresentação</label>
+                <input
+                  value={dataApresentacao || ""}
+                  onChange={(e) => setDataApresentacao(e.target.value)}
+                  type="date"
+                  className="form-control"
+                ></input>
+              </div>
+              <button className="btn btn-secondary m-1">Não contratação</button>
+              <div className="col-6">
+                <label>
+                  Motivo Perda
+                  <select
+                    className="form-select col-12"
+                    aria-label="Default select example"
+                    value={motivoPerda || ""}
+                    onChange={(e) => setMotivoPerda(e.target.value)}
+                  >
+                    <option value=""></option>
+                    <option value="Nenhum">Nenhum</option>
+                    <option value="Nao se aplica">Não se aplica</option>
+                    <option value="Nao tem interesse">Não tem interesse</option>
+                    <option value="Executado por outro">
+                      Executado por outro
+                    </option>
+                    <option value="Outro">Outro</option>
+                  </select>
+                </label>
+              </div>
+              <div className="col-6 form-label">
+                <label className="form-label">Observação</label>
+                <textarea
+                  value={observacao || ""}
+                  onChange={(e) => setObservacao(e.target.value)}
+                  type="text"
+                  className="form-control"
+                  rows="4"
+                ></textarea>
+              </div>
+              <button className="btn btn-secondary m-1">Outros Valores</button>
+              <div className="col-6 form-label">
+                <label className="form-label">Renda Esperada</label>
+                <input
+                  value={rendaEsperada || ""}
+                  onChange={(e) => setRendaEsperada(e.target.value)}
+                  type="number"
+                  className="form-control"
+                ></input>
+              </div>
+              <div className="col-6 form-label">
+                <label className="form-label">Total de Oportunidades</label>
+                <input
+                  value={totalOportunidades || ""}
+                  onChange={(e) => setTotalOportunidades(e.target.value)}
+                  type="number"
+                  className="form-control"
+                ></input>
+              </div>
+              <div className="col-6">
+                <label>
+                  Está Fechado
+                  <select
+                    className="form-select col-12"
+                    aria-label="Default select example"
+                    value={estaFechado || ""}
+                    onChange={(e) => setEstaFechado(e.target.value)}
+                  >
+                    <option value=""></option>
+                    <option value="1">Sim</option>
+                    <option value="0">Não</option>
+                  </select>
+                </label>
+              </div>
+
+              <div className="col-6">
+                <label>
+                  Está Ganho
+                  <select
+                    className="form-select col-12"
+                    aria-label="Default select example"
+                    value={estaGanho || ""}
+                    onChange={(e) => setEstaGanho(e.target.value)}
+                  >
+                    <option value=""></option>
+                    <option value="1">Sim</option>
+                    <option value="0">Não</option>
+                  </select>
+                </label>
+              </div>
+              <div className="col-6">
+                <label>
+                  Catégoria Previsão
+                  <select
+                    className="form-select col-12"
+                    aria-label="Default select example"
+                    value={categoriaPrevisao || ""}
+                    onChange={(e) => setCategoriaPrevisao(e.target.value)}
+                  >
+                    <option value=""></option>
+                    <option value="Forecast">Forecast</option>
+                    <option value="BestCase">BestCase</option>
+                    <option value="Pipeline">Pipeline</option>
+                    <option value="Omitted">Omitted</option>
+                    <option value="Closed">Closed</option>
+                  </select>
+                </label>
+              </div>
+              <div className="col-6">
+                <label>
+                  Nome Catégoria Previsão
+                  <select
+                    className="form-select col-12"
+                    aria-label="Default select example"
+                    value={nomeCategoriaPrevisao || ""}
+                    onChange={(e) => setNomeCategoriaPrevisao(e.target.value)}
+                  >
+                    <option value=""></option>
+                    <option value="Forecast">Forecast</option>
+                    <option value="BestCase">BestCase</option>
+                    <option value="Pipeline">Pipeline</option>
+                    <option value="Omitted">Omitted</option>
+                    <option value="Closed">Closed</option>
+                  </select>
+                </label>
+              </div>
+              <div className="col-6">
+                <label>
+                  Linha Oportunidade
+                  <select
+                    className="form-select col-12"
+                    aria-label="Default select example"
+                    value={itemLinhaOportunidade || ""}
+                    onChange={(e) => setItemLinhaOportunidade(e.target.value)}
+                  >
+                    <option value=""></option>
+                    <option value="1">Sim</option>
+                    <option value="0">Não</option>
+                  </select>
+                </label>
+              </div>
+              <div className="col-6 form-label">
+                <label className="form-label">Data Alteração Estágio</label>
+                <input
+                  value={dataAlteracaoUltimoEstagio || ""}
+                  onChange={(e) =>
+                    setDataAlteracaoUltimoEstagio(e.target.value)
+                  }
+                  type="date"
+                  className="form-control"
+                ></input>
+              </div>
+              <div className="col-6">
+                <label>
+                  Ano Fiscal
+                  <select
+                    className="form-select col-12"
+                    aria-label="Default select example"
+                    value={anoFiscal || ""}
+                    onChange={(e) => setAnoFiscal(e.target.value)}
+                  >
+                    <option value=""></option>
+                    <option value="2018">2018</option>
+                    <option value="2019">2019</option>
+                    <option value="2020">2020</option>
+                    <option value="2021">2021</option>
+                    <option value="2022">2022</option>
+                    <option value="2023">2023</option>
+                  </select>
+                </label>
+              </div>
+              <div className="col-6">
+                <label>
+                  Trimestre Fiscal
+                  <select
+                    className="form-select col-12"
+                    aria-label="Default select example"
+                    value={trimestreFiscal || ""}
+                    onChange={(e) => setTrimestreFiscal(e.target.value)}
+                  >
+                    <option value=""></option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                  </select>
+                </label>
+              </div>
+              <div className="col-6 form-label">
+                <label className="form-label">Data Execução</label>
+                <input
+                  value={dataExecucao || ""}
+                  onChange={(e) => setDataExecucao(e.target.value)}
+                  type="date"
+                  className="form-control"
+                ></input>
+              </div>
+              <div className="col-6 form-label">
+                <label className="form-label">Data Conclusão Triagem</label>
+                <input
+                  value={dataConclusaoTriagem || ""}
+                  onChange={(e) => setDataConclusaoTriagem(e.target.value)}
+                  type="date"
+                  className="form-control"
+                ></input>
+              </div>
+              <div className="col-6 form-label">
+                <label className="form-label">
+                  Data Recebimento Documentação
+                </label>
+                <input
+                  value={dataRecebimentoDocumentacao || ""}
+                  onChange={(e) =>
+                    setDataRecebimentoDocumentacao(e.target.value)
+                  }
+                  type="date"
+                  className="form-control"
+                ></input>
+              </div>
+              <div className="col-6">
+                <label>
+                  Documentação Recebida
+                  <select
+                    className="form-select col-12"
+                    aria-label="Default select example"
+                    value={documentacaoRecebida || ""}
+                    onChange={(e) => setDocumentacaoRecebida(e.target.value)}
+                  >
+                    <option value=""></option>
+                    <option value="1">Sim</option>
+                    <option value="0">Não</option>
+                  </select>
+                </label>
+              </div>
+              <div className="col-6">
+                <label>
+                  Deliberação
+                  <select
+                    className="form-select col-12"
+                    aria-label="Default select example"
+                    value={deliberacao || ""}
+                    onChange={(e) => setDeliberacao(e.target.value)}
+                  >
+                    <option value=""></option>
+                    <option value="1">Sim</option>
+                    <option value="0">Não</option>
+                  </select>
+                </label>
+              </div>
+              <div className="col-6 form-label">
+                <label className="form-label">Forma</label>
+                <input
+                  value={forma || ""}
+                  onChange={(e) => setForma(e.target.value)}
                   type="text"
                   className="form-control"
                 ></input>
@@ -478,33 +658,6 @@ function OpportunityEdit() {
                 ></input>
               </div>
               <div className="col-6 form-label">
-                <label className="form-label">Origem Oportunidade</label>
-                <input
-                  value={origemOportunidade || ""}
-                  onChange={(e) => setOrigemOportunidade(e.target.value)}
-                  type="text"
-                  className="form-control"
-                ></input>
-              </div>
-              <div className="col-6 form-label">
-                <label className="form-label">Prazo Externo</label>
-                <input
-                  value={prazoExterno || ""}
-                  onChange={(e) => setPrazoExterno(e.target.value)}
-                  type="text"
-                  className="form-control"
-                ></input>
-              </div>
-              <div className="col-6 form-label">
-                <label className="form-label">Prazo Interno</label>
-                <input
-                  value={prazoInterno || ""}
-                  onChange={(e) => setPrazoInterno(e.target.value)}
-                  type="text"
-                  className="form-control"
-                ></input>
-              </div>
-              <div className="col-6 form-label">
                 <label className="form-label">Refinamento</label>
                 <input
                   value={refinamento || ""}
@@ -513,44 +666,33 @@ function OpportunityEdit() {
                   className="form-control"
                 ></input>
               </div>
-              <div className="col-6 form-label">
-                <label className="form-label">Triagem Concluida</label>
-                <input
-                  value={triagemConcluida || ""}
-                  onChange={(e) => setTriagemConcluida(e.target.value)}
-                  type="text"
-                  className="form-control"
-                ></input>
+              <div className="col-6">
+                <label>
+                  Triagem Concluida
+                  <select
+                    className="form-select col-12"
+                    aria-label="Default select example"
+                    value={triagemConcluida || ""}
+                    onChange={(e) => setTriagemConcluida(e.target.value)}
+                  >
+                    <option value=""></option>
+                    <option value="1">Sim</option>
+                    <option value="0">Não</option>
+                  </select>
+                </label>
               </div>
-              <div className="col-6 form-label">
-                <label className="form-label">Data Apresentação</label>
-                <input
-                  value={dataApresentacao || ""}
-                  onChange={(e) => setDataApresentacao(e.target.value)}
+              <div className="col-12 form-label">
+                <label className="form-label">Descrição</label>
+                <textarea
+                  value={descricao || ""}
+                  onChange={(e) => setDescricao(e.target.value)}
                   type="text"
                   className="form-control"
-                ></input>
-              </div>
-              <div className="col-6 form-label">
-                <label className="form-label">Observação</label>
-                <input
-                  value={observacao || ""}
-                  onChange={(e) => setObservacao(e.target.value)}
-                  type="text"
-                  className="form-control"
-                ></input>
-              </div>
-              <div className="col-6 form-label">
-                <label className="form-label">Seguimento</label>
-                <input
-                  value={seguimento || ""}
-                  onChange={(e) => setSeguimento(e.target.value)}
-                  type="text"
-                  className="form-control"
-                ></input>
+                  rows="3"
+                ></textarea>
               </div>
               <button type="submit" className="btn btn-primary">
-                Editar Conta
+                Opportunity Edit
               </button>
             </div>
           </form>

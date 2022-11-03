@@ -61,35 +61,35 @@ const Navbar = () => {
           <Nav className="me-auto">
             {logged && (
               <>
-                <Link to="/inicio" className="nav-link">
-                  Inicio
+                <Link to="/home" className="nav-link">
+                  Home
                 </Link>
                 <Link to="/leads" className="nav-link">
                   Leads
                 </Link>
                 <Link to="/account" className="nav-link">
-                  Contas
+                  Account
                 </Link>
                 <Link to="/contact" className="nav-link">
-                  Contatos
+                  Contact
                 </Link>
                 <Link to="/opportunity" className="nav-link">
-                  Oportunidades
+                  Opportunity
                 </Link>
-                <Link to="/tarefas" className="nav-link">
-                  Tarefas
+                <Link to="/task" className="nav-link">
+                  Task
                 </Link>
-                <Link to="/paineis" className="nav-link">
-                  Paineis
+                <Link to="/panel" className="nav-link">
+                  Panels
                 </Link>
                 <Link to="/report" className="nav-link">
-                  Relatorios
+                  Report
                 </Link>
-                <Link to="/calendario" className="nav-link">
-                  Calendario
+                <Link to="/calendar" className="nav-link">
+                  Calendar
                 </Link>
                 <Link to="/product" className="nav-link">
-                  Produto/Teses
+                  Product
                 </Link>
                 <Link to="/user" className="nav-link">
                   User

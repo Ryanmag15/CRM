@@ -6,8 +6,11 @@ import "./scss/app.scss";
 
 import Navbar from "./components/Navbar";
 
-import Inicio from "./pages/Inicio";
+import Home from "./pages/Home";
 import Report from "./pages/Report";
+import Task from "./pages/Task";
+import Panel from "./pages/Panel";
+import Calendar from "./pages/Calendar";
 
 import UserShow from "./pages/UserShow";
 import UserCreate from "./pages/UserCreate";
@@ -36,8 +39,8 @@ const Router = (props) => {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route element={<AuthMiddleware />}>
-          <Route path="/" element={<Inicio />} />
-          <Route path="/inicio" element={<Inicio />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/user" element={<UserShow />} />
           <Route path="/user/create" element={<UserCreate />} />
           <Route path="/user/edit/:id" element={<UserEdit />} />
@@ -59,6 +62,9 @@ const Router = (props) => {
           <Route path="/product/edit/:id" element={<ProductEdit />} />
 
           <Route path="/report" element={<Report />} />
+          <Route path="/task" element={<Task />} />
+          <Route path="/panel" element={<Panel />} />
+          <Route path="/calendar" element={<Calendar />} />
         </Route>
       </Routes>
     </BrowserRouter>

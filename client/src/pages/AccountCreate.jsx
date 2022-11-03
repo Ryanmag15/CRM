@@ -16,6 +16,9 @@ function AccountCreate() {
   const [naturezaJuridica, setNaturezaJuridica] = useState("");
   const [cnpj, setCnpj] = useState("");
   const [capital, setCapital] = useState("");
+  const [dataEncerramento, setDataEncerramento] = useState("");
+  // const [dataEncerramentoExercicio, setDataEncerramentoExercicio] =
+  //   useState("");
   const [auditoriaIndependente, setAuditoriaIndependente] = useState("");
   const [funcionarios, setFuncionarios] = useState("");
   const [marcas, setMarcas] = useState("");
@@ -52,6 +55,8 @@ function AccountCreate() {
       naturezaJuridica: naturezaJuridica,
       cnpj: cnpj,
       capital: capital,
+      dataEncerramento: dataEncerramento,
+      // dataEncerramentoExercicio: dataEncerramentoExercicio,
       auditoriaIndependente: auditoriaIndependente,
       funcionarios: funcionarios,
       marcas: marcas,
@@ -82,6 +87,9 @@ function AccountCreate() {
         <div className="card-body">
           <form onSubmit={store}>
             <div className="row">
+              <button className="btn btn-secondary">
+                Informações Sobre a Conta
+              </button>
               <div className="col-6 form-label">
                 <label className="form-label">Nome</label>
                 <input
@@ -244,12 +252,13 @@ function AccountCreate() {
               </div>
               <div className="col-6 form-label">
                 <label className="form-label">Marcas</label>
-                <input
+                <textarea
                   value={marcas}
                   onChange={(e) => setMarcas(e.target.value)}
                   type="text"
                   className="form-control"
-                ></input>
+                  rows="3"
+                ></textarea>
               </div>
               <div className="col-6 form-label">
                 <label className="form-label">Receita Anual</label>
@@ -271,12 +280,13 @@ function AccountCreate() {
               </div>
               <div className="col-6 form-label">
                 <label className="form-label">Metas Anuais</label>
-                <input
+                <textarea
                   value={metaAnuais}
                   onChange={(e) => setMetaAnuais(e.target.value)}
                   type="text"
                   className="form-control"
-                ></input>
+                  rows="3"
+                ></textarea>
               </div>
               <div className="col-6 form-label">
                 <label className="form-label">SoC Anual</label>
@@ -306,12 +316,13 @@ function AccountCreate() {
               </div>
               <div className="col-6 form-label">
                 <label className="form-label">Outros Relevantes</label>
-                <input
+                <textarea
                   value={outrasRelevantes}
                   onChange={(e) => setOutrasRelevantes(e.target.value)}
                   type="text"
                   className="form-control"
-                ></input>
+                  rows="3"
+                ></textarea>
               </div>
               <div className="col-6 form-label">
                 <label className="form-label">
@@ -342,41 +353,49 @@ function AccountCreate() {
                   className="form-control"
                 ></input>
               </div>
+              <button className="btn btn-secondary">Outras Informações</button>
               <div className="col-6 form-label">
                 <label className="form-label">Principal Necessidade</label>
-                <input
+                <textarea
                   value={principalNecessidade}
                   onChange={(e) => setPrincipalNecessidade(e.target.value)}
                   type="text"
                   className="form-control"
-                ></input>
+                  rows="3"
+                ></textarea>
               </div>
               <div className="col-6 form-label">
                 <label className="form-label">Demandas Jurídica</label>
-                <input
+                <textarea
                   value={demandasJuridicas}
                   onChange={(e) => setDemandasJuridicas(e.target.value)}
                   type="text"
                   className="form-control"
-                ></input>
+                  rows="3"
+                ></textarea>
               </div>
               <div className="col-6 form-label">
                 <label className="form-label">Estratégia Cliente</label>
-                <input
+                <textarea
                   value={estrategiaCliente}
                   onChange={(e) => setEstrategiaCliente(e.target.value)}
                   type="text"
                   className="form-control"
-                ></input>
+                  rows="3"
+                ></textarea>
               </div>
+              <button className="btn btn-secondary">
+                Informações Endereço
+              </button>
               <div className="col-6 form-label">
                 <label className="form-label">Rua</label>
-                <input
+                <textarea
                   value={rua}
                   onChange={(e) => setRua(e.target.value)}
                   type="text"
                   className="form-control"
-                ></input>
+                  rows="3"
+                ></textarea>
               </div>
               <div className="col-6 form-label">
                 <label className="form-label">Cidade</label>
@@ -388,7 +407,7 @@ function AccountCreate() {
                 ></input>
               </div>
               <div className="col-6 form-label">
-                <label className="form-label">Estado</label>
+                <label className="form-label">CEP</label>
                 <input
                   value={cep}
                   onChange={(e) => setCep(e.target.value)}
@@ -414,6 +433,26 @@ function AccountCreate() {
                   className="form-control"
                 ></input>
               </div>
+              <div className="col-6 form-label">
+                <label className="form-label">Data Encerramento</label>
+                <input
+                  value={dataEncerramento}
+                  onChange={(e) => setDataEncerramento(e.target.value)}
+                  type="date"
+                  className="form-control"
+                ></input>
+              </div>
+              {/* <div className="col-6 form-label">
+                <label className="form-label">
+                  Data Encerramento Exercício
+                </label>
+                <input
+                  value={dataEncerramentoExercicio}
+                  onChange={(e) => setDataEncerramentoExercicio(e.target.value)}
+                  type="date"
+                  className="form-control"
+                ></input>
+              </div> */}
               <button type="submit" className="btn btn-primary">
                 Criar Conta
               </button>
