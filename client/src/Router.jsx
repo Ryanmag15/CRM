@@ -12,6 +12,10 @@ import Task from "./pages/Task";
 import Panel from "./pages/Panel";
 import Calendar from "./pages/Calendar";
 
+import LeadShow from "./pages/LeadShow";
+import LeadCreate from "./pages/LeadCreate";
+import LeadEdit from "./pages/LeadEdit";
+
 import UserShow from "./pages/UserShow";
 import UserCreate from "./pages/UserCreate";
 import UserEdit from "./pages/UserEdit";
@@ -60,6 +64,10 @@ const Router = (props) => {
           <Route path="/product" element={<ProductShow />} />
           <Route path="/product/create" element={<ProductCreate />} />
           <Route path="/product/edit/:id" element={<ProductEdit />} />
+
+          <Route path="/lead" element={<LeadShow />} />
+          <Route path="/lead/create" element={<LeadCreate />} />
+          <Route path="/lead/edit/:id" element={<LeadEdit />} />
 
           <Route path="/report" element={<Report />} />
           <Route path="/task" element={<Task />} />

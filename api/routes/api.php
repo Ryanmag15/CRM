@@ -7,6 +7,7 @@ use App\Http\Controllers\api\HonorarioController;
 use App\Http\Controllers\api\TaskController;
 use App\Http\Controllers\api\CommitmentController;
 use App\Http\Controllers\api\ProductController;
+use App\Http\Controllers\api\LeadController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\api\UserController;
@@ -84,4 +85,12 @@ Route::controller(ProductController::class)->group(function(){
     Route::get('/product/{id}', 'show' );
     Route::put('/product/{id}', 'update' );
     Route::delete('/product/{id}', 'destroy');
+});
+
+Route::controller(LeadController::class)->group(function(){
+    Route::get('/leads', 'index');
+    Route::post('/lead', 'store');
+    Route::get('/lead/{id}', 'show' );
+    Route::put('/lead/{id}', 'update' );
+    Route::delete('/lead/{id}', 'destroy');
 });

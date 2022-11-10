@@ -7,46 +7,47 @@ import Search from "../components/Search";
 import Pagination from "../components/Pagination";
 
 const endpoint = "http://localhost:8000/api";
-const ProductShow = () => {
-  const [products, setProducts] = useState([]);
-
-  const keys = ["nome", "ativo", "descricao"];
+const LeadShow = () => {
+  const [leads, setLeads] = useState([]);
+  const keys = ["primeiroNome", "ultimoNome", "nomeDoMeio", "nomeConta"];
   const [query, setQuery] = useState("");
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [productsPerPage] = useState(30);
-  const indexOfLastProduct = currentPage * productsPerPage;
-  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-  let currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
+  const [leadsPerPage] = useState(30);
+  const indexOfLastLead = currentPage * leadsPerPage;
+  const indexOfFirstLead = indexOfLastLead - leadsPerPage;
+  let currentLeads = leads.slice(indexOfFirstLead, indexOfLastLead);
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   if (query == "") {
-    currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
+    currentLeads = leads.slice(indexOfFirstLead, indexOfLastLead);
   } else {
-    currentProducts = Search(products, query, keys);
+    currentLeads = Search(leads, query, keys);
   }
 
   useEffect(() => {
-    getAllProducts();
+    getAllLeads();
   }, []);
 
-  const getAllProducts = async () => {
-    const response = await axios.get(`${endpoint}/products`);
-    setProducts(response.data);
+  const getAllLeads = async () => {
+    const response = await axios.get(`${endpoint}/leads`);
+    setLeads(response.data);
   };
 
-  const deleteProduct = async (id) => {
-    await axios.delete(`${endpoint}/product/${id}`);
-    getAllProducts();
+  console.log(leads);
+
+  const deleteLead = async (id) => {
+    await axios.delete(`${endpoint}/lead/${id}`);
+    getAllLeads();
   };
 
   return (
     <div className="d-grid gap-2">
-      <div className="row col-12">
+      <div className="row">
         <div className="col-8">
           <Form className="d-flex m-1">
             <Form.Control
-              type="text"
+              type="search"
               placeholder="Filtro"
               className="me-2"
               aria-label="Search"
@@ -56,7 +57,7 @@ const ProductShow = () => {
         </div>
         <div className="col-4">
           <Link
-            to="/product/create"
+            to="/lead/create"
             className="col-11 btn btn-outline-primary m-1 "
           >
             Create
@@ -67,32 +68,32 @@ const ProductShow = () => {
         <thead>
           <tr>
             <th scope="col">#</th>
-            <th className="" scope="col">
-              Nome
-            </th>
-            <th className="col-8" scope="col">
-              Descrição
-            </th>
+            <th scope="col">Tratamento</th>
+            <th scope="col">Primeiro Nome</th>
+            <th scope="col">Último Nome</th>
+            <th scope="col">Nome Da Conta</th>
             <th className="text-center" scope="col">
               Ações
             </th>
           </tr>
         </thead>
         <tbody>
-          {Search(currentProducts, query, keys).map((product) => (
-            <tr key={product.id}>
-              <th>{product.id}</th>
-              <td>{product.nome}</td>
-              <td>{product.descricao}</td>
+          {Search(currentLeads, query, keys).map((lead) => (
+            <tr key={lead.id}>
+              <th>{lead.id}</th>
+              <td>{lead.tratamento}</td>
+              <td>{lead.primeiroNome}</td>
+              <td>{lead.ultimoNome}</td>
+              <td>{lead.nomeConta}</td>
               <td className="text-center">
                 <Link
-                  to={`edit/${product.id}`}
+                  to={`edit/${lead.id}`}
                   className="btn btn-outline-warning"
                 >
                   Editar
                 </Link>
                 <button
-                  onClick={() => deleteProduct(product.id)}
+                  onClick={() => deleteLead(lead.id)}
                   className="btn btn-outline-danger m-1"
                 >
                   Deletar
@@ -103,8 +104,8 @@ const ProductShow = () => {
         </tbody>
       </Table>
       <Pagination
-        dadosPorPagina={productsPerPage}
-        totalDados={products.length}
+        dadosPorPagina={leadsPerPage}
+        totalDados={leads.length}
         paginate={paginate}
         activePage={currentPage}
       />
@@ -112,4 +113,4 @@ const ProductShow = () => {
   );
 };
 
-export default ProductShow;
+export default LeadShow;

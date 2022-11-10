@@ -49,7 +49,7 @@ const OpportunityShow = () => {
 
   return (
     <div className="d-grid gap-2">
-      <div className="row">
+      <div className="row col-12">
         <div className="col-8">
           <Form className="d-flex m-1">
             <Form.Control
@@ -61,7 +61,7 @@ const OpportunityShow = () => {
             />
           </Form>
         </div>
-        <div className="col-4">
+        <div className="col-4 p-0">
           <Link
             to="/opportunity/create"
             className="col-11 btn btn-outline-primary m-1 "
