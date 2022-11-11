@@ -51,4 +51,8 @@ class User extends Authenticatable
         return $this->password;
     }
 
+    public function getAcitivities() {
+        return Activity::with('user')->get();
+    }
+
 }

@@ -8,6 +8,7 @@ use App\Http\Controllers\api\TaskController;
 use App\Http\Controllers\api\CommitmentController;
 use App\Http\Controllers\api\ProductController;
 use App\Http\Controllers\api\LeadController;
+use App\Http\Controllers\api\ActivityController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\api\UserController;
@@ -93,4 +94,12 @@ Route::controller(LeadController::class)->group(function(){
     Route::get('/lead/{id}', 'show' );
     Route::put('/lead/{id}', 'update' );
     Route::delete('/lead/{id}', 'destroy');
+});
+
+Route::controller(ActivityController::class)->group(function(){
+    Route::get('/activities', 'index');
+    Route::post('/activity', 'store');
+    Route::get('/activity/{id}', 'show' );
+    Route::put('/activity/{id}', 'update' );
+    Route::delete('/activity/{id}', 'destroy');
 });

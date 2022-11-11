@@ -57,6 +57,10 @@ class Account extends Model
     public function getContacts() {
         return Contact::with('account')->get();
     }
+
+    public function getAcitivities() {
+        return Activity::with('account')->get();
+    }
    
 }
 

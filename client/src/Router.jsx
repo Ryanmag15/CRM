@@ -36,6 +36,10 @@ import ProductShow from "./pages/ProductShow";
 import ProductCreate from "./pages/ProductCreate";
 import ProductEdit from "./pages/ProductEdit";
 
+import ActivityShow from "./pages/ActivityShow";
+import ActivityCreate from "./pages/ActivityCreate";
+import ActivityEdit from "./pages/ActivityEdit";
+
 const Router = (props) => {
   return (
     <BrowserRouter>
@@ -64,6 +68,10 @@ const Router = (props) => {
           <Route path="/product" element={<ProductShow />} />
           <Route path="/product/create" element={<ProductCreate />} />
           <Route path="/product/edit/:id" element={<ProductEdit />} />
+
+          <Route path="/activity" element={<ActivityShow />} />
+          <Route path="/activity/create" element={<ActivityCreate />} />
+          <Route path="/activity/edit/:id" element={<ActivityEdit />} />
 
           <Route path="/lead" element={<LeadShow />} />
           <Route path="/lead/create" element={<LeadCreate />} />
