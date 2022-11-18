@@ -1,16 +1,12 @@
-function BasicExample() {
+import React from "react";
+import PanelAdmin from "../components/PanelAdmin";
+
+function Panel() {
   return (
     <div>
-      <div class="d-grid gap-2">
-        <button className="btn btn-info">
-          Será feito futuramente essa função
-        </button>
-        <button className="btn btn-info">
-          Será feito futuramente essa função
-        </button>
-      </div>
+      <PanelAdmin />
     </div>
   );
 }
 
-export default BasicExample;
+export default Panel;

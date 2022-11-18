@@ -16,3 +16,5 @@ npm install bootstrap
 npm install bootstrap-icons
 npm install react-router-dom
 npm install react-redux
+
+npm install recharts --save
