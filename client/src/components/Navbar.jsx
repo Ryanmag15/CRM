@@ -38,27 +38,27 @@ const Navbar = () => {
                 <Link to="/opportunity" className="nav-link">
                   Opportunity
                 </Link>
-                <Link to="/task" className="nav-link">
+                {/* <Link to="/task" className="nav-link">
                   Task
-                </Link>
-                <Link to="/panel" className="nav-link">
+                </Link> */}
+                {/* <Link to="/panel" className="nav-link">
                   Panel
-                </Link>
+                </Link> */}
                 <Link to="/report" className="nav-link">
                   Report
                 </Link>
-                <Link to="/calendar" className="nav-link">
+                {/* <Link to="/calendar" className="nav-link">
                   Calendar
-                </Link>
+                </Link> */}
                 <Link to="/product" className="nav-link">
                   Product
                 </Link>
                 <Link to="/activity" className="nav-link">
                   Activity
                 </Link>
-                <Link to="/user" className="nav-link">
+                {/* <Link to="/user" className="nav-link">
                   User
-                </Link>
+                </Link> */}
               </>
             )}
           </Nav>

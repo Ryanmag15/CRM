@@ -54,7 +54,6 @@ function ContactEdit() {
       industria: industria,
       faturamento: faturamento,
       funcionarios: funcionarios,
-      funcionarios: funcionarios,
       origemLead: origemLead,
     });
     navigate("/lead");

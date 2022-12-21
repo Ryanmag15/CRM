@@ -1,4 +1,4 @@
-import { PureComponent } from "react";
+import React from "react";
 import {
   LineChart,
   Line,
@@ -7,116 +7,40 @@ import {
   CartesianGrid,
   Tooltip,
   Legend,
+  ResponsiveContainer,
 } from "recharts";
 
-const data = [
-  {
-    name: "Page A",
-    uv: 4000,
-    pv: 2400,
-    amt: 2400,
-  },
-  {
-    name: "Page B",
-    uv: 3000,
-    pv: 1398,
-    amt: 2210,
-  },
-  {
-    name: "Page C",
-    uv: 2000,
-    pv: 9800,
-    amt: 2290,
-  },
-  {
-    name: "Page D",
-    uv: 2780,
-    pv: 3908,
-    amt: 2000,
-  },
-  {
-    name: "Page E",
-    uv: 1890,
-    pv: 4800,
-    amt: 2181,
-  },
-  {
-    name: "Page F",
-    uv: 2390,
-    pv: 3800,
-    amt: 2500,
-  },
-  {
-    name: "Page G",
-    uv: 3490,
-    pv: 4300,
-    amt: 2100,
-  },
-];
+import { useState, useEffect } from "react";
+import axios from "axios";
+const endpoint = "http://localhost:8000/api";
 
-export default class PanelAdmin extends PureComponent {
-  static demoUrl =
-    "https://codesandbox.io/s/line-chart-of-different-axis-interval-oxw2p";
+function PanelAdmin() {
+  const [accounts, setAccounts] = useState([]);
+  useEffect(() => {
+    getAllAccounts();
+  }, []);
 
-  render() {
-    return (
-      <div>
-        <LineChart width={600} height={300} data={data}>
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" interval="preserveEnd" />
-          <YAxis interval="preserveEnd" />
-          <Legend />
-          <Line
-            type="monotone"
-            dataKey="pv"
-            stroke="#8884d8"
-            activeDot={{ r: 8 }}
-          />
-          <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
-        </LineChart>
+  const getAllAccounts = async () => {
+    const response = await axios.get(`${endpoint}/accounts`);
+    setAccounts(response.data);
+  };
 
-        <LineChart width={600} height={300} data={data}>
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" interval="preserveStart" />
-          <YAxis interval="preserveStart" />
-          <Legend />
-          <Line
-            type="monotone"
-            dataKey="pv"
-            stroke="#8884d8"
-            activeDot={{ r: 8 }}
-          />
-          <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
-        </LineChart>
-
-        <LineChart width={600} height={300} data={data}>
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" interval="preserveStartEnd" />
-          <YAxis interval="preserveStartEnd" />
-          <Legend />
-          <Line
-            type="monotone"
-            dataKey="pv"
-            stroke="#8884d8"
-            activeDot={{ r: 8 }}
-          />
-          <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
-        </LineChart>
-
-        <LineChart width={600} height={300} data={data}>
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" interval={0} angle={30} dx={20} />
-          <YAxis />
-          <Legend />
-          <Line
-            type="monotone"
-            dataKey="pv"
-            stroke="#8884d8"
-            activeDot={{ r: 8 }}
-          />
-          <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
-        </LineChart>
-      </div>
-    );
-  }
+  // console.log(accounts);
+  return (
+    <div>
+      <LineChart
+        width={1000}
+        height={400}
+        data={accounts}
+        margin={{ top: 5, right: 20, left: 10, bottom: 5 }}
+      >
+        <XAxis dataKey="name" />
+        <Tooltip />
+        <CartesianGrid stroke="#f5f5f5" />
+        <Line type="monotone" dataKey="tipo" stroke="#ff7300" yAxisId={0} />
+      </LineChart>
+    </div>
+  );
 }
+
+export default PanelAdmin;
