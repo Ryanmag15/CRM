@@ -5,6 +5,7 @@ CRM feito em React e Laravel
 # API - COMANDOS
 
 composer install
+composer update
 php artisan key:generate Dentro de .env e realizar as configurações de acordo.
 
 # CLIENT - COMANDOS
